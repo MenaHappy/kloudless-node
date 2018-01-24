@@ -22,3 +22,4 @@ Contribution, under the MIT License.
 * Perelman Yuval [@perelman](https://github.com/perelman)
 * Nick Quinlan [@nquinlan](https://github.com/nquinlan)
 * Joeson Chiang [@joesonchiang](https://github.com/joesonchiang)
+* Mahmoud Elmenshawy [@menshawi] (https://github.com/menshawi) - Venzee Technologies Inc.

@@ -21,6 +21,7 @@ var fileBuffer = fs.readFileSync(path.join(__dirname, 'fixtures/test.txt'));
 var linkId;
 var folderId;
 var accountId;
+var newAccountId;
 
 async.waterfall([
   function(cb) {
@@ -38,6 +39,7 @@ async.waterfall([
         accountId = process.env.TEST_ACCOUNT_ID;
       else
         accountId = res.objects[0].id;
+        newAccountId = res.objects[1].id;
 
       var cType = response.headers['content-type'];
       var expectedCType = 'application/json';
@@ -186,6 +188,24 @@ async.waterfall([
       }
       folderId = res.id;
       console.log('folders create test pass');
+      cb(null);
+    });
+  },
+
+  function(cb) {
+    console.log('files copy test...');
+    kloudless.files.copy({
+      account_id: accountId,
+      file_id: fileId,
+      parent_id: folderId,
+      account: newAccountId,
+      name: fileReName
+    }, function(err, res) {
+      if (err) {
+        return cb('Files copy: ' + err);
+      }
+      fileId = res.id;
+      console.log('files copy test pass');
       cb(null);
     });
   },
